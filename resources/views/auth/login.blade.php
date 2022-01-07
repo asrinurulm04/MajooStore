@@ -3,10 +3,10 @@
 <head>
 	<title>LOGIN</title>
 	<link href="{{ asset('images/logo2.png') }}" rel="icon">
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrapp.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-	<link rel="stylesheet" type="text/css" href="css/utill.css">
-	<link rel="stylesheet" type="text/css" href="css/mainn.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/css/bootstrapp.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/utill.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mainn.css') }}">
 </head>
 <body>
 	
@@ -46,7 +46,7 @@
 		</div>
 	</div>
 	
-	<script src="vendor/bootstrap/js/bootstrapp.min.js"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrapp.min.js') }}"></script>
 
 </body>
 </html>

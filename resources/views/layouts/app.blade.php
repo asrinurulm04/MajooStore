@@ -1,110 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Maruti Admin Template by WrapPixel</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-responsive.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/maruti-style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/maruti-media.css') }}" class="skin-color" />
-    <link href="{{ asset('eco/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('eco/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('eco/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('eco/css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('eco/css/style.css') }}" rel="stylesheet">
+<html>
 
-    <!-- Favicon icon -->
-    <link href="{{ asset('images/logo2.png') }}" rel="icon">
-  </head>
+<head>
+    <title>@yield('title')</title>
 
-  <body>
-    <div class="btn-group rightzero">
-      <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a>
-    </div>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+</head>
 
-    <!--top-Header-menu-->
-    <div id="user-nav" class="navbar navbar-inverse btn-group rightzero">
-      <ul class="nav">
-        <li class="">
-          <a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a>
-        </li>
-        <li class="">
-          <a title="" href="{{ route('signout') }}"><i class="icon icon-share-alt"></i>
-            <span class="text">Logout</span>
-					</a>
-        </li>
-      </ul>
-    </div>
-    <!--close-top-Header-menu-->
-    <!--left-menu-stats-sidebar-->
-    <div id="sidebar">
-      <ul>
-        <li class="active">
-          <a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a>
-        </li>
-        <li class="submenu">
-          <a href="#"><i class="icon icon-signal"></i> <span>Report</span>
-            <span class="label label-important">3</span></a>
-          <ul>
-            <li><a href="form-common.html">Laporan Penjualan</a></li>
-            <li><a href="form-validation.html">Laporan Pembelian</a></li>
+<body>
+  <div id="wrapper">
+    <div id="" class="gray-bg">
+      <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+            <ul class="nav navbar-top-links navbar-right">
+              <li><a href="{{route('dasboard')}}"><i class="fa fa-home"></i>Dasboard</a></li>
+              <li><a href="{{route('dasboard')}}"><i class="fa fa-user"></i>Profile</a></li>
+              <li><a href="login.html"><i class="fa fa-shopping-cart"></i>Keranjang</a></li>
+              <li><a href="login.html"><i class="fa fa-shopping-bag"></i>Produk</a></li>
+              <li><a href="login.html"><i class="fa fa-shopping-basket"></i>Order</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                  <i class="fa fa-folder-open"></i>Report
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                  <li>
+                    <div class="dropdown-messages-box">
+                      <a class="dropdown-item float-left" href="profile.html">
+                      <img alt="image" class="rounded-circle" src="img/a7.jpg">
+                      </a>
+                      <div class="media-body">
+                      <small class="float-right">46h ago</small>
+                      <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                      <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="dropdown-divider"></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <ul class="nav navbar-top-links navbar-right">
+            <li>
+              <span class="m-r-sm text-muted welcome-message">Welcome, {{ Auth::user()->name }}</span>
+            </li>
+            <li>
+              <a href="{{ route('signout') }}">
+                <i class="fa fa-sign-out"></i> Log out
+              </a>
+            </li>
           </ul>
-        </li>
-        <li>
-          <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
-        </li>
-        <li>
-          <a href="tables.html"
-            ><i class="icon icon-th"></i> <span>Tables</span></a>
-        </li>
-        <li>
-          <a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a>
-        </li>
-        <li class="submenu">
-          <a href="#"><i class="icon icon-shopping-cart"></i> <span>Product</span>
-            <span class="label label-important">3</span></a>
-          <ul>
-            <li><a href="form-common.html">List Produk</a></li>
-            <li><a href="form-validation.html">Tambah Produk Baru</a></li>
-            <li><a href="form-wizard.html">Form with Wizard</a></li>
-          </ul>
-        </li>
-        <li class="submenu">
-          <a href="#"><i class="icon icon-th-list"></i> <span>Data Master</span>
-            <span class="label label-important">3</span></a>
-          <ul>
-            <li><a href="form-common.html">List Produk</a></li>
-            <li><a href="form-validation.html">Form with Validation</a></li>
-            <li><a href="form-wizard.html">Form with Wizard</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!--close-left-menu-stats-sidebar-->
-
-    <div id="content">
-      <div id="content-header">
-        <div id="breadcrumb">
-          @yield('halaman')
+        </nav>
         </div>
-      </div>
-      <div class="container-fluid">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                @yield('info')
+            </div>
+        </div>
+
+        <div class="wrapper wrapper-content animated fadeInRight ecommerce">
           @yield('content')
-      </div>
+        </div>
+
     </div>
-    <div class="row-fluid">
-      <div id="footer" class="span12">
-        2022 &copy; By Asri Nurul M
-      </div>
-    </div>
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.ui.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-colorpicker.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.uniform.js') }}"></script>
-    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/maruti.js') }}"></script>
-    <script src="{{ asset('assets/js/maruti.form_common.js') }}"></script>
-  </body>
+</div>
+
+
+
+<!-- Mainly scripts -->
+<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+<script src="{{ asset('js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+<script src="{{ asset('js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('js/inspinia.js') }}"></script>
+<script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
+<script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+@yield('s')
+
+</body>
+
 </html>
+

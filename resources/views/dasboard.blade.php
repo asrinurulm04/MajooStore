@@ -1,5 +1,19 @@
 @extends('layouts.app')
 @section('title', 'Dasboard')
+@section('info')
+<h2>Product edit</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a>E-commerce</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <strong>Product edit</strong>
+                    </li>
+                </ol>
+@endsection
 @section('content')
 
         <div class="wrapper wrapper-content animated fadeInRight">
@@ -25,7 +39,7 @@
                                 </div>
                                 <div class="m-t text-righ">
 
-                                    <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                    <a href="{{route('showproduk')}}" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
                                 </div>
                             </div>
                         </div>

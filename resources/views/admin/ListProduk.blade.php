@@ -83,7 +83,7 @@
                                     <td class="text-right">
                                         <div class="btn-group">
                                             <button class="btn-white btn btn-xs">View</button>
-                                            <button class="btn-white btn btn-xs">Edit</button>
+                                            <a href="{{route('editproduk')}}" class="btn btn-sm btn-warning" type="button"> Edit</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -657,4 +657,23 @@
 
 
         </div>
+@endsection
+@section('s')
+
+<script src="{{ asset('eco/js/plugins/summernote/summernote-bs4.js') }}"></script>
+<script>
+    $(document).ready(function(){
+
+        $('.summernote').summernote();
+
+        $('.input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+    });
+</script>
 @endsection

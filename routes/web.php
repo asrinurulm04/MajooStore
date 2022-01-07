@@ -22,7 +22,7 @@ Route::get('signin', 'LoginController@getLogin')->name('signin');
 Route::post('postLogin', 'LoginController@postLogin')->name('postLogin');
 Route::get('signout', function(){
     Auth::logout();
-    return redirect('/home');
+    return redirect('/');
 })->name('signout');
 
 route::get('dasboard','DasboardController@index')->name('dasboard');
@@ -41,6 +41,18 @@ Route::get('userapproval/{id}/destroy', [
     'as' =>'ua.destroy']);
 
 Route::get('listProduk','admin\ProdukController@listProduk')->name('listProduk');
+Route::get('editproduk','admin\ProdukController@editproduk')->name('editproduk');
+Route::get('showproduk','admin\ProdukController@showproduk')->name('showproduk');
+Route::get('addproduk','admin\ProdukController@addproduk')->name('addproduk');
+Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
+
+// Pembeli
+Route::get('cart','pelanggan\CartController@cart')->name('cart');
+
+// Supplier
+Route::get('order','supplier\OrderController@order')->name('order');
+Route::get('profile','supplier\ProfileController@profile')->name('profile');
+Route::post('addToko','supplier\ProfileController@addToko')->name('addToko');
 
 Route::get('tambahruang','admin\ApprovalController@ruangan')->name('tambahruang');
 Route::get('laporan','admin\ApprovalController@lapor')->name('laporan');

@@ -37,7 +37,7 @@ class LoginController extends Controller
             'status' => 'active',
             'role_id' => 2
         ])){
-            return redirect()->route('dasboard');
+            return redirect()->route('profile');
         }
 
         //PELANGGAN============================================================================================
