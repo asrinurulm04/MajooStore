@@ -1,80 +1,110 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+  <head>
+    <title>Maruti Admin Template by WrapPixel</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-responsive.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/maruti-style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/maruti-media.css') }}" class="skin-color" />
+    <link href="{{ asset('eco/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('eco/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('eco/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('eco/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('eco/css/style.css') }}" rel="stylesheet">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Favicon icon -->
+    <link href="{{ asset('images/logo2.png') }}" rel="icon">
+  </head>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
+  <body>
+    <div class="btn-group rightzero">
+      <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
+    <!--top-Header-menu-->
+    <div id="user-nav" class="navbar navbar-inverse btn-group rightzero">
+      <ul class="nav">
+        <li class="">
+          <a title="" href="#"><i class="icon icon-user"></i> <span class="text">Profile</span></a>
+        </li>
+        <li class="">
+          <a title="" href="{{ route('signout') }}"><i class="icon icon-share-alt"></i>
+            <span class="text">Logout</span>
+					</a>
+        </li>
+      </ul>
+    </div>
+    <!--close-top-Header-menu-->
+    <!--left-menu-stats-sidebar-->
+    <div id="sidebar">
+      <ul>
+        <li class="active">
+          <a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="icon icon-signal"></i> <span>Report</span>
+            <span class="label label-important">3</span></a>
+          <ul>
+            <li><a href="form-common.html">Laporan Penjualan</a></li>
+            <li><a href="form-validation.html">Laporan Pembelian</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Widgets</span></a>
+        </li>
+        <li>
+          <a href="tables.html"
+            ><i class="icon icon-th"></i> <span>Tables</span></a>
+        </li>
+        <li>
+          <a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Full width</span></a>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="icon icon-shopping-cart"></i> <span>Product</span>
+            <span class="label label-important">3</span></a>
+          <ul>
+            <li><a href="form-common.html">List Produk</a></li>
+            <li><a href="form-validation.html">Tambah Produk Baru</a></li>
+            <li><a href="form-wizard.html">Form with Wizard</a></li>
+          </ul>
+        </li>
+        <li class="submenu">
+          <a href="#"><i class="icon icon-th-list"></i> <span>Data Master</span>
+            <span class="label label-important">3</span></a>
+          <ul>
+            <li><a href="form-common.html">List Produk</a></li>
+            <li><a href="form-validation.html">Form with Validation</a></li>
+            <li><a href="form-wizard.html">Form with Wizard</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!--close-left-menu-stats-sidebar-->
+
+    <div id="content">
+      <div id="content-header">
+        <div id="breadcrumb">
+          @yield('halaman')
+        </div>
+      </div>
+      <div class="container-fluid">
+          @yield('content')
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div id="footer" class="span12">
+        2022 &copy; By Asri Nurul M
+      </div>
+    </div>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.ui.custom.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-colorpicker.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.uniform.js') }}"></script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/maruti.js') }}"></script>
+    <script src="{{ asset('assets/js/maruti.form_common.js') }}"></script>
+  </body>
 </html>

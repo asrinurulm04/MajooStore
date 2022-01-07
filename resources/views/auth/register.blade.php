@@ -31,9 +31,9 @@
               <input class="form-control" id="password_confirmation" name="password_confirmation" placeholder="confirm_password" type="password" required/>
             </div>
             <div class="form-group">
-              <select id="departement" name="departement" class="form-control" >
-                @foreach($depts as $dept)
-                <option value="{{  $dept->id }}" {{ old('departement') == $dept->id ? 'selected' : '' }}>{{ $dept->status }}</option>
+              <select id="role" name="role" class="form-control" >
+                @foreach($roles as $role)
+                <option value="{{  $role->id }}" >{{ $role->namaRule }}</option>
                 @endforeach
               </select>
             </div>

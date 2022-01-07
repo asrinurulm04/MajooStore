@@ -22,56 +22,32 @@ class LoginController extends Controller
         
         //ADMIN==========================================================================================
         if(Auth::attempt([
-            'email' =>$request->inputEmailUser,
-            'password' => $request->password,
-            'status' => 'active',
-            'role_id' => 1
-        ])){
-            return redirect('/userapproval');
-        }
-        elseif(Auth::attempt([
             'username' =>$request->inputEmailUser,
             'password' => $request->password,
             'status' => 'active',
             'role_id' => 1
         ])){
-            return redirect('/userapproval');
+            return redirect('/dasboard');
         }
 
-        //OPERATOR============================================================================================
+        //SUPPLIER============================================================================================
         if(Auth::attempt([
-            'email' =>$request->inputEmailUser,
-            'password' => $request->password,
-            'status' => 'active',
-            'role_id' => 2
-        ])){
-            return redirect()->route('operator');
-        }
-        elseif(Auth::attempt([
             'username' =>$request->inputEmailUser,
             'password' => $request->password,
             'status' => 'active',
             'role_id' => 2
         ])){
-            return redirect()->route('operator');
+            return redirect()->route('dasboard');
         }
 
-        //PEMINJAM============================================================================================
+        //PELANGGAN============================================================================================
         if(Auth::attempt([
-            'email' =>$request->inputEmailUser,
-            'password' => $request->password,
-            'status' => 'active',
-            'role_id' => 3
-        ])){
-            return redirect()->route('peminjam');
-        }
-        elseif(Auth::attempt([
             'username' =>$request->inputEmailUser,
             'password' => $request->password,
             'status' => 'active',
             'role_id' => 3
         ])){
-            return redirect()->route('peminjam');
+            return redirect()->route('dasboard');
         }
         
 

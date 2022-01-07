@@ -22,7 +22,7 @@
             <div class="login-wrap">
               <form class="form-login" method="POST" action="{{ url(action('LoginController@postLogin')) }}">
               <div class="form-group">
-                <input type="text" autocomplete="off" class="form-control" id="inputEmailUser" name="inputEmailUser" {{ old('inputEmailUser') }} placeholder="E-mail Or Username" autofocus required>
+                <input type="text" autocomplete="off" class="form-control" id="inputEmailUser" name="inputEmailUser" {{ old('inputEmailUser') }} placeholder="Username" autofocus required>
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" minlength="6" required>
@@ -47,7 +47,6 @@
 	</div>
 	
 	<script src="vendor/bootstrap/js/bootstrapp.min.js"></script>
-	<script src="js/mainn.js"></script>
 
 </body>
 </html>

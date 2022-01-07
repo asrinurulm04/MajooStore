@@ -18,26 +18,23 @@ class RegistrationController extends Controller
     public function create()
     {
         $roles = Role::all();
-        $depts = Departement::all();
         return view('auth.register')->with([
-            'depts' => $depts,
-            'roles' => $roles]);
+            'roles' => $roles
+        ]);
     }
 
     public function registrationPost(Request $request)
     {
         $this->validate(request(), [
             'username' => 'unique:users',
-            'email' => 'unique:users',
             'password' => 'confirmed'
         ]);
         
         $user = new User;
         $user->name = $request->name;
         $user->username = $request->username;
-        $user->email = $request->email;
         $user->password = $request->password;
-        $user->status = $request->departement;
+        $user->status = 'sending';
         $user->role_id = $request->role;
         $user->save();
         

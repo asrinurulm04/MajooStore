@@ -25,6 +25,7 @@ Route::get('signout', function(){
     return redirect('/home');
 })->name('signout');
 
+route::get('dasboard','DasboardController@index')->name('dasboard');
 /**** PESAN Antar User */
 Route::post('send','PesanController@send')->name('send.email');
 
@@ -38,6 +39,8 @@ Route::get('userapproval/{id}/update', [
 Route::get('userapproval/{id}/destroy', [
     'uses'=>'admin\ApprovalController@destroy',
     'as' =>'ua.destroy']);
+
+Route::get('listProduk','admin\ProdukController@listProduk')->name('listProduk');
 
 Route::get('tambahruang','admin\ApprovalController@ruangan')->name('tambahruang');
 Route::get('laporan','admin\ApprovalController@lapor')->name('laporan');
