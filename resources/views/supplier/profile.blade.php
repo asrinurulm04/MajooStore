@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', 'List Produk')
 @section('info')
-	<h2>Data Toko</h2>
+	<h2><li class="fa fa-building"></li> Data Toko</h2>
   <li class="fa fa-home"></li> <a href="{{route('dasboard')}}"> Dasboard</a> /
-  <li class="fa fa-user"></li> <a href="{{route('profile',Auth::user()->id)}}"> <strong> Profile</strong></a> 
+  <li class="fa fa-user"></li> <strong> Profile</strong>
 @endsection
 @section('content')
 

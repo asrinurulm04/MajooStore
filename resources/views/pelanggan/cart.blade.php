@@ -1,18 +1,10 @@
 @extends('layouts.app')
 @section('title', 'List Produk')
 @section('info')
-	<h2>Product edit</h2>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Home</a>
-    </li>
-    <li class="breadcrumb-item">
-      <a>E-commerce</a>
-    </li>
-    <li class="breadcrumb-item active">
-      <strong>Keranjang</strong>
-    </li>
-  </ol>
+	<h2><li class="fa fa-shopping-cart"></li> Keranjang Order</h2>
+  <li class="fa fa-home"></li> <a href="{{route('dasboard')}}"> Dasboard</a> /
+  <li class="fa fa-shopping-bag"></li> Produk /
+  <li class="fa fa-shopping-cart"></li> <strong> Keranjang</strong>
 @endsection
 @section('content')
 

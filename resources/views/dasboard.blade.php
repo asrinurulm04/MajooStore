@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Dasboard')
 @section('info')
-	<h2>Dasboard</h2>
+	<h2><li class="fa fa-home"></li> Dasboard</h2>
 	@if(Auth::user()->role_id=='2')
 		@if($toko!='1')
 		<div class="alert alert-danger alert-dismissable">

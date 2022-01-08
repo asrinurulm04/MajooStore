@@ -1,15 +1,9 @@
 @extends('layouts.app')
 @section('title', 'List Produk')
 @section('info')
-	<h2>List Produk</h2>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Home</a>
-    </li>
-    <li class="breadcrumb-item active">
-      <strong>List Product</strong>
-    </li>
-  </ol>
+	<h2><li class="fa fa-shopping-bag"></li> List Produk</h2>
+  <li class="fa fa-home"></li> <a href="{{route('dasboard')}}"> Dasboard</a> /
+  <li class="fa fa-shopping-bag"></li> <strong> List Product</strong>
 @endsection
 @section('content')
 

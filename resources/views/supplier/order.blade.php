@@ -1,5 +1,10 @@
 @extends('layouts.app')
 @section('title', 'List Produk')
+@section('info')
+	<h2><li class="fa fa-shopping-basket"></li> Data Order</h2>
+  <li class="fa fa-home"></li> <a href="{{route('dasboard')}}"> Dasboard</a> /
+  <li class="fa fa-shopping-basket"></li> <strong> Data Order</strong>
+@endsection
 @section('content')
 
 @if (session('status'))

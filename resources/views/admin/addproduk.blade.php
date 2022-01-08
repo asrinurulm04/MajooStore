@@ -1,15 +1,10 @@
 @extends('layouts.app')
 @section('title', 'List Produk')
 @section('info')
-	<h2>Tambah Produk Baru</h2>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Dasboard</a>
-    </li>
-    <li class="breadcrumb-item active">
-      <strong>Produk Baru</strong>
-    </li>
-  </ol>
+	<h2><li class="fa fa-plus"></li> Tambah Produk Baru</h2>
+  <li class="fa fa-home"></li> <a href="{{route('dasboard')}}"> Dasboard</a> /
+  <li class="fa fa-shopping-basket"></li><a href="{{route('listProduk',Auth::user()->id)}}"> List Product</a> /
+  <li class="fa fa-plus"></li> <strong> Produk Baru</strong>
 @endsection
 @section('content')
 @if(count($errors) > 0)
