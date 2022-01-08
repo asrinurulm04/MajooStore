@@ -29,6 +29,12 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Harga*</label>
+              <div class="col-md-9 col-sm-8 col-xs-12">
+                <input id="harga" class="form-control " type="number" name="harga">
+              </div>
+            </div>
+            <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Description*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
 								<textarea name="desc" id="desc" rows="2" class="form-control"></textarea>
@@ -37,7 +43,7 @@
             <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Jumlah stok*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
-                <input id="jumlah" class="form-control " required value="" type="text" name="jumlah" >
+                <input id="jumlah" class="form-control " required value="" type="number" name="jumlah" >
               </div>
             </div>
             <div class="form-group row">
@@ -50,9 +56,19 @@
               </div>
             </div>
             <div class="form-group row">
+              <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Kategori Produk*</label>
+              <div class="col-md-9 col-sm-8 col-xs-12">
+                <select class="form-control form-control-line" required name="type" >
+                  @foreach($type as $type)
+                  <option value="{{ $type->id }}">{{ $type->jenis_usaha }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Gambar Produk*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
-                <input id="image" class="form-control " required value="" type="file" name="image" >
+                <input type="file" name="filename" required class="form-control">
               </div>
             </div>
           </div>

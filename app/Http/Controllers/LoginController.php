@@ -19,7 +19,6 @@ class LoginController extends Controller
     }
 
     public function postLogin(Request $request){
-        
         //ADMIN==========================================================================================
         if(Auth::attempt([
             'username' =>$request->inputEmailUser,
@@ -37,7 +36,7 @@ class LoginController extends Controller
             'status' => 'active',
             'role_id' => 2
         ])){
-            return redirect()->route('profile');
+            return redirect()->route('dasboard');
         }
 
         //PELANGGAN============================================================================================

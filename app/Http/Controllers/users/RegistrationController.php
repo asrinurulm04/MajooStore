@@ -34,7 +34,7 @@ class RegistrationController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = $request->password;
-        $user->status = 'sending';
+        $user->status = 'active';
         $user->role_id = $request->role;
         $user->save();
         

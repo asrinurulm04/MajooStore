@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Toko;
+use App\produk;
+use Auth;
 
 class DasboardController extends Controller
 {
@@ -12,6 +15,11 @@ class DasboardController extends Controller
     }
     
     public function index(){
-        return view('dasboard');
+        $produk = produk::all();
+        $toko = Toko::where('pemilik',Auth::user()->id)->count();
+        return view('dasboard')->with([
+            'toko' => $toko,
+            'produk' => $produk
+        ]);
     }
 }

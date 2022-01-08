@@ -4,6 +4,7 @@ Route::get('/', function () {
     return redirect('/signin');
 });
 
+Route::get('home','HomeController@home')->name('home');
 Route::get('/pageAksesKhusus', function(){
     return view('pageAksesKhusus');
 });
@@ -40,19 +41,22 @@ Route::get('userapproval/{id}/destroy', [
     'uses'=>'admin\ApprovalController@destroy',
     'as' =>'ua.destroy']);
 
-Route::get('listProduk','admin\ProdukController@listProduk')->name('listProduk');
-Route::get('editproduk','admin\ProdukController@editproduk')->name('editproduk');
-Route::get('showproduk','admin\ProdukController@showproduk')->name('showproduk');
-Route::get('addproduk','admin\ProdukController@addproduk')->name('addproduk');
+Route::get('listProduk/{id}','admin\ProdukController@listProduk')->name('listProduk');
+Route::get('editproduk/{id}','admin\ProdukController@editproduk')->name('editproduk');
+Route::post('editdataproduk/{id}','admin\ProdukController@editdataproduk')->name('editdataproduk');
+Route::get('showproduk/{id}','admin\ProdukController@showproduk')->name('showproduk');
+Route::get('addproduk/{id}','admin\ProdukController@addproduk')->name('addproduk');
 Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
 
 // Pembeli
-Route::get('cart','pelanggan\CartController@cart')->name('cart');
+Route::get('cart/{id}','pelanggan\CartController@cart')->name('cart');
+Route::post('addPembelian/{id}','pelanggan\PembelianController@addPembelian')->name('addPembelian');
+Route::get('delete/{id}','pelanggan\CartController@delete')->name('delete');
 
 // Supplier
-Route::get('order','supplier\OrderController@order')->name('order');
-Route::get('profile','supplier\ProfileController@profile')->name('profile');
-Route::post('addToko','supplier\ProfileController@addToko')->name('addToko');
+Route::get('order/{id}','supplier\OrderController@order')->name('order');
+Route::get('profile/{id}','supplier\ProfileController@profile')->name('profile');
+Route::post('addToko/{id}','supplier\ProfileController@addToko')->name('addToko');
 
 Route::get('tambahruang','admin\ApprovalController@ruangan')->name('tambahruang');
 Route::get('laporan','admin\ApprovalController@lapor')->name('laporan');

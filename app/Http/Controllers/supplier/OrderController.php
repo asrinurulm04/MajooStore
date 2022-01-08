@@ -11,7 +11,7 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
-    public function order(){
+    public function order($id){
         return view('supplier.order');
     }
 }

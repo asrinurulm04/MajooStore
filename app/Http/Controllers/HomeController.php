@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Redirect;
+use App\model\users\User;
 
 class HomeController extends Controller
 {
@@ -34,14 +37,14 @@ class HomeController extends Controller
         // ->namaRule : kolom 'role' pada table 'role'
  
         if (auth()->check() && Auth::user()->role->namaRule == 'admin'){
-            return Redirect::route('userapproval');
+            return Redirect::route('dasboard');
         // jika non admin
         }elseif (auth()->check() && Auth::user()->role->namaRule == 'suplier'){
-            return Redirect::route('dasboardmanager');
+            return Redirect::route('dasboard');
         }elseif (auth()->check() && Auth::user()->role->namaRule == 'pelanggan'){
-            return Redirect::route('dasboardnr');
+            return Redirect::route('dasboard');
         }else{
-            return view ('signin');
+            return view ('auth.login');
         }
     }
 }
