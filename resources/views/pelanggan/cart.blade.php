@@ -45,12 +45,14 @@
           <div class="table-responsive">
             <table class="table shoping-cart-table">
               <tbody>
+                @php $no = 0; @endphp
 								@foreach($cart as $cart)
+                @php ++$no; @endphp
             	  <tr>
 									<input type="hidden" value="{{$cart->id}}" name="data[{{$loop->index}}][id]">
 									<input type="hidden" value="{{$cart->id_produk}}" name="produk[{{$loop->index}}][id_produk]">
 									<input type="hidden" value="{{$cart->jumlah_produk}}" name="produk[{{$loop->index}}][jumlah_produk]">
-	                <td width="90">
+	                <td width="90px">
 	                	<div class="cart-product-imitation">
                   		<embed src="{{asset('data_file/'.$cart->produk->image)}}" width="90px" height="90" type="">
 	                  </div>
@@ -68,16 +70,13 @@
                       <a href="{{route('delete',$cart->id)}}" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
       						  </div>
       						</td>
-      						<td>
-      						  Rp.{{$cart->produk->harga}}
-      						</td>
-                  <td width="65">
+      						<td width="20%"><?php $angka_format = number_format($cart->produk->harga,2,",","."); echo "Rp. ".$angka_format;?></td>
+                  <td width="65px">
                     <input type="text" readonly class="form-control" value="{{$cart->jumlah_produk}}">
     							</td>
-    							<td>
-                    <h4>
-                    Rp.{{$cart->jumlah_produk * $cart->produk->harga}}
-  								  </h4>
+    							<td width="20%">
+                      <input type="hidden" value="{{$cart->jumlah_produk * $cart->produk->harga}}" name="hasil" id="hasil{{$no}}">
+                      <?php $angka_format = number_format(($cart->jumlah_produk * $cart->produk->harga),2,",","."); echo "Rp. ".$angka_format;?>
   								</td>
                 </tr>
 								@endforeach
@@ -96,18 +95,16 @@
           <h5>Cart Summary</h5>
         </div>
         <div class="ibox-content">
-          <span>
-            Total
-          </span>
-          <h2 class="font-bold">
-            $390,00
-          </h2><hr/>
+          <span> Total Belanja</span>
+          <h3 class="font-bold">
+            Rp. <input type="text" id="total" name="total" readonly>
+          </h3><hr/>
           <span class="text-muted small">
-            *For United States, France and Germany applicable sales tax will be applied
+            *Sudah termasuk Pajak
           </span>
           <div class="m-t-sm">
             <div class="btn-group">
-            <button class="btn btn-primary btn-sm" type="submit"><li class="fa fa-hopping-cart"></li> Checkout</button>
+            <button class="btn btn-primary btn-sm" type="submit"><li class="fa fa-shopping-cart"></li> Checkout</button>
             {{ csrf_field() }}
             </div>
           </div>
@@ -117,4 +114,22 @@
 		</form>
   </div>
 </div>
+@endsection
+@section('s')
+<script>
+   $(document).ready(function(){        
+    var i = {{ $no }};
+    var total  = 0;
+
+  	for(y=1;y<=i;y++){
+      batch = parseFloat($('#hasil'+y).val());
+      console.log(batch);
+                
+      total   = total + batch;
+      $('#total').val(total);
+      console.log(total);
+    } 
+              
+  });
+</script>
 @endsection

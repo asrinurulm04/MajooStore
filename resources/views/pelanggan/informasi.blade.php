@@ -63,19 +63,15 @@
                       <strong> Tanggal Order {{$cart->tanggal_pembelian}} </strong>
            	        </dl>
            	        <div class="m-t-sm">
-                      <a href="{{route('detail',[$cart->id_produk,$cart->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
+                      <a href="{{route('detail',[$cart->id_produk,$cart->id_keranjang])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
       						  </div>
       						</td>
-      						<td>
-      						  Rp.{{$cart->produk->harga}}
-      						</td>
+      						<td><?php $angka_format = number_format($cart->produk->harga,2,",","."); echo "Rp. ".$angka_format;?></td>
                   <td width="65">
                     <input type="text" readonly class="form-control" value="{{$cart->jumlah_produk}}">
     							</td>
     							<td>
-                    <h4>
-                    Rp.{{$cart->jumlah_produk * $cart->produk->harga}}
-  								  </h4>
+                    <h4><?php $angka_format = number_format(($cart->jumlah_produk * $cart->produk->harga),2,",","."); echo "Rp. ".$angka_format;?></h4>
   								</td>
                 </tr>
                 @endif

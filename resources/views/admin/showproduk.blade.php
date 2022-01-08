@@ -50,16 +50,16 @@
         	<div class="col-md-7">
             <h2 class="font-bold m-b-xs">
               {{$produk->nama_produk}}
-            </h2>
+            </h2><hr>
             <div class="m-t-md">
              <h2 class="product-main-price">Rp. {{$produk->harga}} <small class="text-muted"></small> </h2>
-            </div><hr>
+            </div>
             <h4>Deskipsi Produk</h4>
 
-            <div class="small text-muted">
+            <div class=" text-muted">
               {{$produk->desc}}
             </div>
-            <dl class="small m-t-md">
+            <dl class=" m-t-md">
               <dt>Stok Tersedia</dt>
               <dd>{{$produk->Quantity}}</dd>
             </dl><hr>
@@ -68,10 +68,9 @@
               <div class="btn-group">
         				<?php $date = Date('j-F-Y'); ?>
 								<input type="hidden" value="{{$date}}" class="form-control" name="date" id="date">
-								<input type="number" max="{{$produk->Quantity}}" value="1" class="form-control" name="jumlah" id="jumlah">
+								<input type="number" max="{{$produk->Quantity}}" min="0" value="1" class="form-control" name="jumlah" id="jumlah">
 								<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-cart-plus"></i> Add to cart</button>
 								{{ csrf_field() }}
-                <button class="btn btn-dark btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
               </div>
             </div>
           </div>

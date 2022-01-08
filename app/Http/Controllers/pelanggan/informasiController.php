@@ -23,7 +23,7 @@ class informasiController extends Controller
     }
 
     public function infoDetail($id,$keranjang){
-        $cart = keranjang::where('id',$keranjang)->first();
+        $cart = keranjang::where('id_keranjang',$keranjang)->first();
         $produk = produk::where('id',$id)->first();
         return view('pelanggan.detail')->with([
             'produk' => $produk,

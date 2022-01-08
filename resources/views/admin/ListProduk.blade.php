@@ -56,7 +56,7 @@
 								<td>{{$produk->nama_produk}}</td>
 								<td>{{$produk->type->jenis_usaha}}</td>
 								<td>{{$produk->desc}}</td>
-								<td>{{$produk->harga}}</td>
+								<td class="text-right"><?php $angka_format = number_format($produk->harga,2,",","."); echo "Rp. ".$angka_format;?></td>
 								<td class="text-center">
                   @if($produk->Quantity<=9)
                   <span class="label label-danger">{{$produk->Quantity}}</span>

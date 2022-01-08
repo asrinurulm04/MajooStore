@@ -81,8 +81,10 @@
 
             <div>
               <div class="btn-group">
-                <a href="{{route('info',auth()->user()->id)}}" class="btn btn-danger btn-sm" type="button"><li class="fa fa-arrow-circle-left"></li> Kembali</a>
+                <a href="{{route('order',auth()->user()->id)}}" class="btn btn-danger btn-sm" type="button"><li class="fa fa-arrow-circle-left"></li> Kembali</a>
+                @if($cart->status_order=='proses')
                 <a href="{{route('kirimOrder',$cart->id_keranjang)}}" class="btn btn-primary btn-sm" type="button"><li class="fa fa-paper-plane"></li> Kirim Orderan</a>
+                @endif
               </div>
             </div>
           </div>

@@ -36,6 +36,15 @@ class OrderController extends Controller
             'status_order' => 'kirim'
         ]);
 
-        return redirect::route('order',Auth::user()->id);
+        return redirect::route('order',Auth::user()->id)->with('status', 'Produk Telah Di Kirim!');
+    }
+
+    public function terimaOrder($id){
+        $order = keranjang::where('id_keranjang',$id)->update([
+            'status_order' => 'selesai'
+        ]);
+
+        return redirect::route('info',Auth::user()->id)->with('status', 'Produk Telah Di Diterima!');
+
     }
 }

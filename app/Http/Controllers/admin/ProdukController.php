@@ -72,7 +72,7 @@ class ProdukController extends Controller
 
         $add->save();
 
-        return redirect::route('listProduk',$add->id_pemilik)->with('status', 'Data Produk '.$add->nama_produk.' berhasil Di edit');
+        return redirect::back()->with('status', 'Data Produk '.$add->nama_produk.' berhasil Di edit');
     }
 
     public function editdataproduk(Request $request,$id){

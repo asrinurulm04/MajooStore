@@ -50,7 +50,7 @@ class CartController extends Controller
                 ]);
             }
 
-            return redirect::route('dasboard');
+            return redirect::route('dasboard')->with('status', 'Order Sudah Di Kirim!');
         }elseif($cek->alamat==NULL){
             return redirect::route('ProfileUser',Auth::user()->id);
         }

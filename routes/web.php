@@ -68,6 +68,7 @@ Route::get('detail/{id}/{data}','pelanggan\informasiController@infoDetail')->nam
 Route::get('order/{id}','supplier\OrderController@order')->name('order');
 Route::get('detailOrder/{id}/{data}','supplier\OrderController@detailOrder')->name('detailOrder');
 Route::get('kirimOrder/{id}','supplier\OrderController@kirimOrder')->name('kirimOrder');
+Route::get('terimaOrder/{id}','supplier\OrderController@terimaOrder')->name('terimaOrder');
 Route::get('profile/{id}','supplier\ProfileController@profile')->name('profile');
 Route::post('addToko/{id}','supplier\ProfileController@addToko')->name('addToko');
 

@@ -39,8 +39,7 @@
             <embed src="{{asset('data_file/'.$produk->image)}}" width="190px" height="190" type="">
         	</div>
         	<div class="product-desc">
-            <span class="product-price">
-              Rp.{{$produk->harga}}
+            <span class="product-price"><?php $angka_format = number_format($produk->harga,2,",","."); echo "Rp. ".$angka_format;?>
             </span>
             <small class="text-muted">Kategori</small>
             <a href="#" class="product-name"> {{$produk->type->jenis_usaha}}</a>

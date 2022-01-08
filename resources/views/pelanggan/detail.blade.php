@@ -51,7 +51,7 @@
               {{$produk->nama_produk}}
             </h2>
             <div class="m-t-md">
-             <h2 class="product-main-price">Rp. {{$cart->jumlah_produk * $cart->produk->harga}} <small class="text-muted">(Total Belanja)</small> </h2>
+             <h2 class="product-main-price"><?php $angka_format = number_format(($cart->jumlah_produk * $cart->produk->harga),2,",","."); echo "Rp. ".$angka_format;?> <small class="text-muted">(Total Belanja)</small> </h2>
             </div><hr>
             <h4>Status Order</h4>
 
@@ -74,7 +74,7 @@
             <div>
               <div class="btn-group">
                 <a href="{{route('info',auth()->user()->id)}}" class="btn btn-danger btn-sm" type="button"><li class="fa fa-arrow-circle-left"></li> Kembali</a>
-                <button class="btn btn-dark btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
+                <a href="{{route('terimaOrder',$cart->id_keranjang)}}" class="btn btn-success btn-sm" type="button"><li class="fa fa-shopping-bag"></li> Diterima</a>
               </div>
             </div>
           </div>

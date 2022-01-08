@@ -26,7 +26,7 @@ class LoginController extends Controller
             'status' => 'active',
             'role_id' => 1
         ])){
-            return redirect('/dasboard');
+            return redirect('/listuser');
         }
 
         //SUPPLIER============================================================================================
