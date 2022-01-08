@@ -16,8 +16,8 @@ class CartController extends Controller
     }
 
     public function cart($id){
-        $cart = keranjang::where('id_pembeli',$id)->get();
-        $hitung = keranjang::where('id_pembeli',$id)->count();
+        $cart = keranjang::where('id_pembeli',$id)->where('status_order','keranjang')->get();
+        $hitung = keranjang::where('id_pembeli',$id)->where('status_order','keranjang')->count();
         return view('pelanggan.cart')->with([
             'cart' => $cart,
             'hitung' => $hitung
@@ -28,5 +28,16 @@ class CartController extends Controller
         $cart = keranjang::where('id',$id)->delete();
 
         return redirect::back();
+    }
+
+    public function checkout(Request $request){
+        $data = $request->input('data');
+        foreach($data as $data){
+            $cart = keranjang::where('id',$data['id'])->update([
+                'status_order' => 'order'
+            ]);
+        }
+
+        return redirect::route('dasboard');
     }
 }

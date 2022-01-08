@@ -26,29 +26,10 @@
               <li><a href="{{route('profile',Auth::user()->id)}}"><i class="fa fa-user"></i>List User</a></li>
               @elseif(auth()->user()->role_id === 3)
               <li><a href="{{route('cart',auth()->user()->id)}}"><i class="fa fa-shopping-cart"></i>Keranjang</a></li>
+              <li><a href="{{route('info',auth()->user()->id)}}"><i class="fa fa-shopping-bag"></i>Informasi</a></li>
               @elseif(auth()->user()->role_id === 2)
               <li><a href="{{route('listProduk',Auth::user()->id)}}"><i class="fa fa-shopping-bag"></i>Produk</a></li>
               <li><a href="{{route('order',Auth::user()->id)}}"><i class="fa fa-shopping-basket"></i>Order</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                  <i class="fa fa-folder-open"></i>Report
-                </a>
-                <ul class="dropdown-menu dropdown-messages">
-                  <li>
-                    <div class="dropdown-messages-box">
-                      <a class="dropdown-item float-left" href="profile.html">
-                      <img alt="image" class="rounded-circle" src="img/a7.jpg">
-                      </a>
-                      <div class="media-body">
-                      <small class="float-right">46h ago</small>
-                      <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                      <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="dropdown-divider"></li>
-                </ul>
-              </li>
               @endif
             </ul>
           </div>

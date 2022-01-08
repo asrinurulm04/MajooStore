@@ -21,7 +21,7 @@ class PembelianController extends Controller
         $add->id_produk = $id;
         $add->jumlah_produk = $request->jumlah;
         $add->tanggal_pembelian = $request->date;
-        $add->status = 'keranjang';
+        $add->status_order = 'keranjang';
         $add->save();
 
         return redirect::route('cart',$add->id_pembeli);

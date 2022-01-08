@@ -4,6 +4,10 @@ namespace App\Http\Controllers\supplier;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\keranjang;
+use App\produk;
+use Auth;
+use Redirect;
 
 class OrderController extends Controller
 {
@@ -12,6 +16,9 @@ class OrderController extends Controller
     }
 
     public function order($id){
-        return view('supplier.order');
+        $order = Keranjang::join('produk','produk.id','keranjang.id_produk')->where('status_order','!=','keranjang')->where('id_pemilik',Auth::user()->id)->get();
+        return view('supplier.order')->with([
+            'order' => $order
+        ]);
     }
 }

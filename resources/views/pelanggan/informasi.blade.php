@@ -16,19 +16,18 @@
 @endsection
 @section('content')
 <div class="wrapper wrapper-content animated fadeInRight">
-	<form class="form-horizontal form-label-left" method="POST" action="{{route('checkout')}}">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
       <div class="ibox">
         <div class="ibox-title">
-          <span class="float-right">(<strong>{{$hitung}}</strong>) items</span>
-          <h5>Items in your cart</h5>
+          <h5>Informasi Pembelian</h5>
     	  </div>
     	  <div class="ibox-content">
           <div class="table-responsive">
             <table class="table shoping-cart-table">
               <tbody>
 								@foreach($cart as $cart)
+                @if($cart->status_order!='selesai')
             	  <tr>
 									<input type="hidden" value="{{$cart->id}}" name="data[{{$loop->index}}][id]">
 	                <td width="90">
@@ -43,10 +42,11 @@
 	            	      </a>
 	                  </h3>
                     <dl class="small m-b-none">
-                      @if($cart->produk->Quantity <=5)<strong style="color:red">Tersisa {{$cart->produk->Quantity}} Buah</strong>@endif
+                      <strong style="color:red"> {{$cart->status_order}} </strong><br>
+                      <strong> Tanggal Order {{$cart->tanggal_pembelian}} </strong>
            	        </dl>
            	        <div class="m-t-sm">
-                      <a href="{{route('delete',$cart->id)}}" class="text-muted"><i class="fa fa-trash"></i> Remove item</a>
+                      <a href="{{route('detail',[$cart->id_produk,$cart->id])}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Detail</a>
       						  </div>
       						</td>
       						<td>
@@ -61,6 +61,7 @@
   								  </h4>
   								</td>
                 </tr>
+                @endif
 								@endforeach
 	            </tbody>
     			  </table>
@@ -71,31 +72,6 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <div class="ibox">
-        <div class="ibox-title">
-          <h5>Cart Summary</h5>
-        </div>
-        <div class="ibox-content">
-          <span>
-            Total
-          </span>
-          <h2 class="font-bold">
-            $390,00
-          </h2><hr/>
-          <span class="text-muted small">
-            *For United States, France and Germany applicable sales tax will be applied
-          </span>
-          <div class="m-t-sm">
-            <div class="btn-group">
-            <button class="btn btn-primary btn-sm" type="submit"><li class="fa fa-hopping-cart"></li> Checkout</button>
-            {{ csrf_field() }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-		</form>
   </div>
 </div>
 @endsection

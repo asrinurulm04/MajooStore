@@ -51,7 +51,10 @@ Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
 // Pembeli
 Route::get('cart/{id}','pelanggan\CartController@cart')->name('cart');
 Route::post('addPembelian/{id}','pelanggan\PembelianController@addPembelian')->name('addPembelian');
+Route::post('checkout','pelanggan\CartController@checkout')->name('checkout');
 Route::get('delete/{id}','pelanggan\CartController@delete')->name('delete');
+Route::get('info/{id}','pelanggan\informasiController@info')->name('info');
+Route::get('detail/{id}/{data}','pelanggan\informasiController@infoDetail')->name('detail');
 
 // Supplier
 Route::get('order/{id}','supplier\OrderController@order')->name('order');

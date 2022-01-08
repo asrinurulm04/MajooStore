@@ -31,7 +31,7 @@
               {{$produk->desc}}
             </div>
       	    <div class="m-t text-righ">
-              <a href="{{route('showproduk',Auth::user()->id)}}" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+              <a href="{{route('showproduk',$produk->id)}}" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
             </div>
           </div>
   	    </div>
