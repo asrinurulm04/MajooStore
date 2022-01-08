@@ -21,13 +21,15 @@
           <div class="navbar-header">
             <ul class="nav navbar-top-links navbar-right">
               <li><a href="{{route('dasboard')}}"><i class="fa fa-home"></i>Dasboard</a></li>
-              <li><a href="{{route('profile',Auth::user()->id)}}"><i class="fa fa-user"></i>Profile</a></li>
               @if(auth()->user()->role_id === 1)
+              <li><a href="{{route('ProfileUser',Auth::user()->id)}}"><i class="fa fa-user"></i>Profile</a></li>
               <li><a href="{{route('profile',Auth::user()->id)}}"><i class="fa fa-user"></i>List User</a></li>
               @elseif(auth()->user()->role_id === 3)
+              <li><a href="{{route('ProfileUser',Auth::user()->id)}}"><i class="fa fa-user"></i>Profile</a></li>
               <li><a href="{{route('cart',auth()->user()->id)}}"><i class="fa fa-shopping-cart"></i>Keranjang</a></li>
               <li><a href="{{route('info',auth()->user()->id)}}"><i class="fa fa-shopping-bag"></i>Informasi</a></li>
               @elseif(auth()->user()->role_id === 2)
+              <li><a href="{{route('profile',Auth::user()->id)}}"><i class="fa fa-user"></i>Profile</a></li>
               <li><a href="{{route('listProduk',Auth::user()->id)}}"><i class="fa fa-shopping-bag"></i>Produk</a></li>
               <li><a href="{{route('order',Auth::user()->id)}}"><i class="fa fa-shopping-basket"></i>Order</a></li>
               @endif

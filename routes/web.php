@@ -41,6 +41,8 @@ Route::get('userapproval/{id}/destroy', [
     'uses'=>'admin\ApprovalController@destroy',
     'as' =>'ua.destroy']);
 Route::get('listuser','users\UserController@List')->name('listuser');
+Route::get('ProfileUser/{id}','users\UserController@ProfileUser')->name('ProfileUser');
+Route::post('update/{id}','users\UserController@update')->name('update');
 
 Route::get('listProduk/{id}','admin\ProdukController@listProduk')->name('listProduk');
 Route::get('editproduk/{id}','admin\ProdukController@editproduk')->name('editproduk');
@@ -49,6 +51,10 @@ Route::get('showproduk/{id}','admin\ProdukController@showproduk')->name('showpro
 Route::get('addproduk/{id}','admin\ProdukController@addproduk')->name('addproduk');
 Route::get('detailproduk/{id}','admin\ProdukController@detailproduk')->name('detailproduk');
 Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
+Route::get('kategori/{id}','ajax\ProdukController@kategori')->name('kategori');
+
+
+Route::post('file-upload', 'ProdukController@fileUploadPost')->name('fileUploadPost');
 
 // Pembeli
 Route::get('cart/{id}','pelanggan\CartController@cart')->name('cart');

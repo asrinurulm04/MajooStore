@@ -15,6 +15,23 @@
   </ol>
 @endsection
 @section('content')
+
+@if (session('status'))
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {{ session('status') }}
+  </div>
+</div>
+@elseif(session('error'))
+<div class="col-lg-12 col-md-12 col-sm-12">
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    {{ session('error') }}
+  </div>
+</div>
+@endif
+
 <div class="wrapper wrapper-content animated fadeInRight">
 	<form class="form-horizontal form-label-left" method="POST" action="{{route('checkout')}}">
   <div class="row">
@@ -31,6 +48,8 @@
 								@foreach($cart as $cart)
             	  <tr>
 									<input type="hidden" value="{{$cart->id}}" name="data[{{$loop->index}}][id]">
+									<input type="hidden" value="{{$cart->id_produk}}" name="produk[{{$loop->index}}][id_produk]">
+									<input type="hidden" value="{{$cart->jumlah_produk}}" name="produk[{{$loop->index}}][jumlah_produk]">
 	                <td width="90">
 	                	<div class="cart-product-imitation">
                   		<embed src="{{asset('data_file/'.$cart->produk->image)}}" width="90px" height="90" type="">

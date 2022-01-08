@@ -12,6 +12,21 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/background.jpg');">
+      @if(session('status'))
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ session('status') }}
+        </div>
+      </div>
+      @elseif(session('error'))
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ session('error') }}
+        </div>
+      </div>
+      @endif
 			<div class="wrap-login100">
         <img class="img-fluid  d-block mx-auto" src="images/logo2.png" alt="" width="50%">
 				<span class="login100-form-title p-b-34 p-t-27">
@@ -30,7 +45,16 @@
               <div class="container-login100-form-btn">
                 <button class="login100-form-btn" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
                 {{ csrf_field() }}
-                @include('formerrors')
+                @if(count($errors) > 0)
+                <br><div class="alert alert-danger" style="font-size:11px">
+                  <strong>Whoops!</strong><br>
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+                @endif
               </div>
               </form><hr>
               <div class="registration text-center">

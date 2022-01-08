@@ -12,6 +12,17 @@
   </ol>
 @endsection
 @section('content')
+@if(count($errors) > 0)
+<div class="alert alert-danger">
+  <strong>Whoops!</strong> There were some problems with your input.<br><br>
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+
 <form class="form-horizontal form-label-left" method="POST" action="{{route('newproduk')}}" enctype="multipart/form-data">
 <div class="row">
   <div class="col-lg-12">
@@ -25,19 +36,19 @@
             <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Nama produk*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
-                <input id="nama" class="form-control " type="text" name="nama">
+                <input id="nama_produk" class="form-control" required type="text" name="nama_produk">
               </div>
             </div>
             <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Harga*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
-                <input id="harga" class="form-control " type="number" name="harga">
+                <input id="harga" class="form-control " required type="number" name="harga">
               </div>
             </div>
             <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Description*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
-								<textarea name="desc" id="desc" rows="2" class="form-control"></textarea>
+								<textarea name="desc" id="desc" rows="2" required class="form-control"></textarea>
               </div>
             </div>
             <div class="form-group row">
@@ -58,10 +69,17 @@
             <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Kategori Produk*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
-                <select class="form-control form-control-line" required name="type" >
+                <select class="form-control form-control-line" required name="type" id="type">
                   @foreach($type as $type)
                   <option value="{{ $type->id }}">{{ $type->jenis_usaha }}</option>
                   @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Kategori Produk*</label>
+              <div class="col-md-9 col-sm-8 col-xs-12">
+                <select class="form-control form-control-line" name="subkategori" id="subkategori">
                 </select>
               </div>
             </div>
@@ -89,4 +107,39 @@
   </div>
 </div>
 </form>
+@endsection
+@section('s')
+<script type="text/javascript">
+  $(document).ready(function(){
+      // Get Pangan
+      $('#type').on('change', function(){
+        var myId = $(this).val();
+          if(myId){
+            $.ajax({
+              url: '{{URL::to('kategori')}}/'+myId,
+              type: "GET",
+              dataType: "json",
+              beforeSend: function(){ 
+                  $('#loader').css("visibility", "visible");
+              },
+
+              success:function(data){
+                $('#subkategori').empty();
+                $.each(data, function(key, value){
+                  console.log(data);
+                  $('#subkategori').append('<option value="'+ key +'">' + value + '</option>');
+                });
+              },
+              complete: function(){
+                $('#loader').css("visibility","hidden");
+              }
+            });
+          }
+          else{
+            $('#subkategori').empty();
+          }
+      });
+
+  });
+</script>
 @endsection

@@ -38,6 +38,6 @@ class RegistrationController extends Controller
         $user->role_id = $request->role;
         $user->save();
         
-        return redirect()->to('/signin');
+        return redirect()->to('/signin')->with('status', 'Akun Berhasil Di buat!');
     }
 }

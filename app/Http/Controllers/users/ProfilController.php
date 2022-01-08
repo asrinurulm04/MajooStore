@@ -37,14 +37,13 @@ class ProfilController extends Controller
             'password' => 'confirmed'
         ]);
         
-        
         $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
         
-        return Redirect::back()->with('status','Profil Anda Telah Dirubah !');
+        return Redirect::route('dasboard')->with('status','Profil Anda Telah Dirubah !');
 
     }
 

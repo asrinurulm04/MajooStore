@@ -9,6 +9,7 @@ use App\type;
 use App\keranjang;
 use Redirect;
 use Auth;
+use DB;
 
 class ProdukController extends Controller
 {
@@ -48,14 +49,18 @@ class ProdukController extends Controller
 
     public function newProduk(Request $request){
         $add = new produk;
+
+        $this->validate(request(), [
+            'nama_produk' => 'unique:produk,nama_produk',
+        ]);
+
         $add->id_pemilik=Auth::user()->id;
-        $add->nama_produk=$request->nama;
+        $add->nama_produk=$request->nama_produk;
         $add->desc=$request->desc;
         $add->Quantity=$request->jumlah;
         $add->harga=$request->harga;
         $add->status=$request->status;
         $add->id_kategori=$request->type;
-        
         
         if($request->filename!=NULL){
             $data          = $request->file('filename');
@@ -67,7 +72,7 @@ class ProdukController extends Controller
 
         $add->save();
 
-        return redirect::route('listProduk',$add->id_pemilik);
+        return redirect::route('listProduk',$add->id_pemilik)->with('status', 'Data Produk '.$add->nama_produk.' berhasil Di edit');
     }
 
     public function editdataproduk(Request $request,$id){
@@ -89,16 +94,21 @@ class ProdukController extends Controller
         }
         $add->save();
 
-        return redirect::route('listProduk',$add->id_pemilik);
+        return redirect::route('listProduk',$add->id_pemilik)->with('status', 'Data Produk '.$add->nama_produk.' berhasil Di edit');
     }
 
     public function detailproduk($id){
         $produk = produk::where('id',$id)->first();
-        //dd($produk);
         $cart = keranjang::where('id_produk',$id)->get();
         return view('admin.detailproduk')->with([
             'produk' => $produk,
             'cart' => $cart
         ]);
+    }
+
+    public function kategori($id){ // menarik data kategori pangan
+        $pangan = DB::table('sub_kategori')->where('id_type',$id)->pluck('subkategori','id_type');
+        dd($pangan);
+        return json_encode($pangan);
     }
 }

@@ -10,12 +10,11 @@ use Auth;
 class DasboardController extends Controller
 {
     public function __construct(){
-
         $this->middleware('auth');
     }
     
     public function index(){
-        $produk = produk::all();
+        $produk = produk::where('Quantity','!=','0')->get();
         $toko = Toko::where('pemilik',Auth::user()->id)->count();
         return view('dasboard')->with([
             'toko' => $toko,
