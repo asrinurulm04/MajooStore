@@ -29,10 +29,21 @@
 </div>
 @endif
 
+
+<center>
+  <div class="form-group row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @foreach($type as $type)
+        <a href="{{route('dasboard2',$type->id)}}" class="btn btn-primary btn-sm" type="button">{{$type->jenis_usaha}}</a>
+        @endforeach
+    </div>
+  </div>
+</center>
+
 <div class="wrapper wrapper-content animated fadeInRight">
   <div class="row">
 		@foreach($produk as $produk)
-    <div class="col-md-3">
+    <div class="col-md-3" id="show_product">
       <div class="ibox">
         <div class="ibox-content product-box">
           <div class="product-imitation">
@@ -42,9 +53,9 @@
             <span class="product-price"><?php $angka_format = number_format($produk->harga,2,",","."); echo "Rp. ".$angka_format;?>
             </span>
             <small class="text-muted">Kategori</small>
-            <a href="#" class="product-name"> {{$produk->type->jenis_usaha}}</a>
+            <a href="#" class="product-name">{{$produk->nama_produk}} </a>
             <div class="small m-t-xs">
-              {{$produk->desc}}
+              {{$produk->type->jenis_usaha}}
             </div>
       	    <div class="m-t text-righ">
               <a href="{{route('showproduk',$produk->id)}}" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
@@ -56,4 +67,22 @@
 		@endforeach
   </div>
 </div>
+@endsection
+@section('s')
+<script>
+	$(document).ready(function(){
+		$("#type").change(function(){
+			var myId = $(this).val()
+      console.log(myId);
+			$.ajax({
+        url: '{{URL::to('produk')}}/'+myId,
+				method: "POST",
+				success: function(data){
+					$("#show_product").html(data);
+				}
+			})
+		})
+	})
+
+</script>
 @endsection

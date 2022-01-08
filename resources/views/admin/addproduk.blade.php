@@ -23,7 +23,13 @@
 </div>
 @endif
 
-<form class="form-horizontal form-label-left" method="POST" action="{{route('newproduk')}}" enctype="multipart/form-data">
+<style>
+    .progress { position:relative; width:100%; }
+    .bar { background-color: #b5076f; width:0%; height:20px; }
+    .percent { position:absolute; display:inline-block; left:50%; color: #040608;}
+</style>
+
+<form id="fileUploadForm"  class="form-horizontal form-label-left" method="POST" action="{{route('newproduk')}}" enctype="multipart/form-data">
 <div class="row">
   <div class="col-lg-12">
     <div class="ibox ">
@@ -77,18 +83,16 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Kategori Produk*</label>
-              <div class="col-md-9 col-sm-8 col-xs-12">
-                <select class="form-control form-control-line" name="subkategori" id="subkategori">
-                </select>
-              </div>
-            </div>
-            <div class="form-group row">
               <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Gambar Produk*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
                 <input type="file" name="filename" required class="form-control">
               </div>
             </div>
+            <div class="progress">
+              <div class="bar"></div >
+              <div class="percent">0%</div >
+            </div>
+            <br>
           </div>
         </div>
       </div>
@@ -109,6 +113,8 @@
 </form>
 @endsection
 @section('s')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
       // Get Pangan
@@ -141,5 +147,32 @@
       });
 
   });
+</script>
+<script type="text/javascript">
+    var SITEURL = "{{URL('/')}}";
+    $(function() {
+         $(document).ready(function()
+         {
+            var bar = $('.bar');
+            var percent = $('.percent');
+ 
+      $('form').ajaxForm({
+        beforeSend: function() {
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            alert('File Has Been Uploaded Successfully');
+            window.location.href = SITEURL +"/"+"dasboard";
+        }
+      });
+   }); 
+ });
 </script>
 @endsection

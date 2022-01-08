@@ -19,8 +19,10 @@ class ProdukController extends Controller
 
     public function listProduk($id){
         $myproduk = produk::where('id_pemilik',Auth::user()->id)->get();
+        $type = type::all();
         return view('admin.listproduk')->with([
-            'myProduk' => $myproduk
+            'myProduk' => $myproduk,
+            'type' => $type
         ]);
     }
 
@@ -108,6 +110,12 @@ class ProdukController extends Controller
 
     public function kategori($id){ // menarik data kategori pangan
         $pangan = DB::table('sub_kategori')->where('id_type',$id)->pluck('subkategori','id_type');
+        dd($pangan);
+        return json_encode($pangan);
+    }
+
+    public function produk($id){ // menarik data kategori pangan
+        $pangan = DB::table('produk')->where('id_kategori',$id)->pluck('id','nama_produk');
         dd($pangan);
         return json_encode($pangan);
     }

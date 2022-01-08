@@ -18,44 +18,58 @@
 </div>
 @endif
 
+<!-- filter data -->
 <div class="ibox-content m-b-sm border-bottom">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label class="col-form-label" for="date_added">Date added</label>
-        <div class="input-group date">
-          <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_added" type="text" class="form-control" value="03/04/2014">
+  <div>
+    <form id="clear">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group" id="filter_col1" data-column="3">
+          <label>Bulan Order</label>
+          <select name="status" class="form-control column_filter" id="col3_filter" >
+            <option disabled selected>-->Select One<--</option>
+            <?php
+              $bulan=array("January","February","March","April","May","June","july","August","September","October","November","December");
+              $jlh_bln=count($bulan);
+              for($c=0; $c<$jlh_bln; $c+=1){ echo"<option> $bulan[$c] </option>"; }
+            ?>
+          </select>
+        </div>
+      </div>  
+      <div class="col-sm-5">
+        <div class="form-group" id="filter_col1" data-column="4">
+          <label>Status</label>
+          <select name="brand" class="form-control column_filter" id="col4_filter" >
+            <option disabled selected>-->Select One<--</option>
+            <option>New Order</option>
+            <option>Proses</option>
+            <option>Sedang Di Kirim</option>
+            <option>Selesai</option>
+          </select>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label class="col-form-label" for="date_modified">Date modified</label>
-        <div class="input-group date">
-          <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="date_modified" type="text" class="form-control" value="03/06/2014">
+      <div class="col-sm-2">
+        <div class="form-group" id="filter_col1" data-column="5">
+          <label class="text-center">refresh</label>  <br>  
+          <a href="" class="btn btn-info btn-sm"><li class="fa fa-refresh"></li></a>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <label class="col-form-label" for="amount">Amount</label>
-        <input type="text" id="amount" name="amount" value="" placeholder="Amount" class="form-control">
-      </div>
+    </div>  
+    </form>
     </div>
   </div>
 </div>
-
 <div class="row">
   <div class="col-lg-12">
     <div class="ibox">
       <div class="ibox-content">
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <table id="example" class="table ex table-striped table-bordered" style="width:100%">
           <thead>
             <tr>
               <th class="text-center">Customer</th>
               <th class="text-center">Total Biaya</th>
               <th class="text-center" width="10%">Jumlah Order</th>
-              <th class="text-center">Date added</th>
+              <th class="text-center">Tanggal Order</th>
               <th class="text-center">Status</th>
               <th class="text-center" width="5%">Action</th>
             </tr>
@@ -66,7 +80,7 @@
               <td>{{$order->users->name}}</td>
               <td>{{$order->jumlah_produk * $order->produk->harga}}</td>
               <td>{{$order->jumlah_produk}}</td>
-              <td>{{$order->id_keranjang}}</td>
+              <td>{{$order->tanggal_pembelian}}</td>
               <td>
                 @if($order->status_order=='order')
                   <span class="label label-danger">New Order</span>
@@ -97,5 +111,31 @@
 	$(document).ready(function() {
     $('#example').DataTable();
 } );
+</script>
+<script>
+  function filterGlobal () {
+    $('#ex').DataTable().search(
+      $('#global_filter').val(),
+    ).draw();
+  }
+    
+  function filterColumn ( i ) {
+    $('.ex').DataTable().column( i ).search(
+      $('#col'+i+'_filter').val()
+    ).draw();
+  }
+    
+  $(document).ready(function() {
+    $('.ex').DataTable();    
+    $('input.global_filter').on( 'keyup click', function () {
+      filterGlobal();
+    });
+    $('input.column_filter').on( 'keyup click', function () {
+      filterColumn( $(this).parents('div').attr('data-column') );
+    } );
+  });
+  $('select.column_filter').on('change', function () {
+    filterColumn( $(this).parents('div').attr('data-column') );
+  } );
 </script>
 @endsection

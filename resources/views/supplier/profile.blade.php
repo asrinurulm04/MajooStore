@@ -2,14 +2,8 @@
 @section('title', 'List Produk')
 @section('info')
 	<h2>Data Toko</h2>
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Dasboard</a>
-    </li>
-    <li class="breadcrumb-item active">
-      <strong>Profile</strong>
-    </li>
-  </ol>
+  <li class="fa fa-home"></li> <a href="{{route('dasboard')}}"> Dasboard</a> /
+  <li class="fa fa-user"></li> <a href="{{route('profile',Auth::user()->id)}}"> <strong> Profile</strong></a> 
 @endsection
 @section('content')
 

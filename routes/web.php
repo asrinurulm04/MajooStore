@@ -27,6 +27,7 @@ Route::get('signout', function(){
 })->name('signout');
 
 route::get('dasboard','DasboardController@index')->name('dasboard');
+route::get('dasboard2/{data}','DasboardController@index2')->name('dasboard2');
 /**** PESAN Antar User */
 Route::post('send','PesanController@send')->name('send.email');
 
@@ -51,7 +52,8 @@ Route::get('showproduk/{id}','admin\ProdukController@showproduk')->name('showpro
 Route::get('addproduk/{id}','admin\ProdukController@addproduk')->name('addproduk');
 Route::get('detailproduk/{id}','admin\ProdukController@detailproduk')->name('detailproduk');
 Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
-Route::get('kategori/{id}','ajax\ProdukController@kategori')->name('kategori');
+Route::get('kategori/{id}','admin\ProdukController@kategori')->name('kategori');
+Route::get('produk/{id}','admin\ProdukController@produk')->name('produk');
 
 
 Route::post('file-upload', 'ProdukController@fileUploadPost')->name('fileUploadPost');

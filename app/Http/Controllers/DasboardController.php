@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Toko;
 use App\produk;
+use App\type;
 use Auth;
 
 class DasboardController extends Controller
@@ -14,11 +15,24 @@ class DasboardController extends Controller
     }
     
     public function index(){
+        $type = type::all();
         $produk = produk::where('Quantity','!=','0')->get();
         $toko = Toko::where('pemilik',Auth::user()->id)->count();
         return view('dasboard')->with([
             'toko' => $toko,
-            'produk' => $produk
+            'produk' => $produk,
+            'type' => $type
+        ]);
+    }
+
+    public function index2($data){
+        $type = type::all();
+        $produk = produk::where('Quantity','!=','0')->where('id_kategori',$data)->get();
+        $toko = Toko::where('pemilik',Auth::user()->id)->count();
+        return view('dasboard')->with([
+            'toko' => $toko,
+            'produk' => $produk,
+            'type' => $type
         ]);
     }
 }
