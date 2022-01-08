@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\produk;
 use App\type;
+use App\keranjang;
 use Redirect;
 use Auth;
 
@@ -89,5 +90,15 @@ class ProdukController extends Controller
         $add->save();
 
         return redirect::route('listProduk',$add->id_pemilik);
+    }
+
+    public function detailproduk($id){
+        $produk = produk::where('id',$id)->first();
+        //dd($produk);
+        $cart = keranjang::where('id_produk',$id)->get();
+        return view('admin.detailproduk')->with([
+            'produk' => $produk,
+            'cart' => $cart
+        ]);
     }
 }

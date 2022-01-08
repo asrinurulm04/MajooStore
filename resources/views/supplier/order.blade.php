@@ -40,7 +40,7 @@
               <th class="text-center" width="10%">Jumlah Order</th>
               <th class="text-center">Date added</th>
               <th class="text-center">Status</th>
-              <th class="text-center" width="15%">Action</th>
+              <th class="text-center" width="5%">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,7 @@
               <td>{{$order->users->name}}</td>
               <td>{{$order->jumlah_produk * $order->produk->harga}}</td>
               <td>{{$order->jumlah_produk}}</td>
-              <td>{{$order->tanggal_pembelian}}</td>
+              <td>{{$order->id_keranjang}}</td>
               <td>
                 @if($order->status_order=='order')
                   <span class="label label-danger">New Order</span>
@@ -63,9 +63,7 @@
               </td>
               <td class="text-right">
                 <div class="btn-group">
-                  <button class="btn-primary btn btn-sm dim" type="button">View</button>
-                  <button class="btn-warning btn btn-sm dim" type="button">Edit</button>
-                  <button class="btn-danger btn btn-sm dim" type="button">Delete</button>
+                  <a href="{{route('detailOrder',[$order->id,$order->id_keranjang])}}" class="btn-primary btn btn-sm dim" type="button">View</a>
                 </div>
               </td>
             </tr>

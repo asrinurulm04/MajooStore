@@ -19,7 +19,6 @@
   <div class="col-lg-12">
     <div class="ibox product-detail">
       <div class="ibox-content">
-				<form class="form-horizontal form-label-left" method="POST" action="{{route('addPembelian',$produk->id)}}" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md-5">
             <div class="product-images">
@@ -37,31 +36,47 @@
             <div class="m-t-md">
              <h2 class="product-main-price">Rp. {{$produk->harga}} <small class="text-muted"></small> </h2>
             </div><hr>
-            <h4>Deskipsi Produk</h4>
+            <h4>Data Penjualan</h4>
 
-            <div class="small text-muted">
-              {{$produk->desc}}
+            <div class=" text-muted">
+              <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Jumlah Order</th>
+                    <th>Tanggal Order</th>
+                    <th>Status Order</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($cart as $cart)
+                  <tr>
+                    <td>{{$cart->jumlah_produk}}</td>
+                    <td>{{$cart->tanggal_pembelian}}</td>
+                    <td>{{$cart->status_order}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
             </div>
-            <dl class="small m-t-md">
-              <dt>Stok Tersedia</dt>
-              <dd>{{$produk->Quantity}}</dd>
+            <dl class=" m-t-md">
             </dl><hr>
 
             <div>
               <div class="btn-group">
-        				<?php $date = Date('j-F-Y'); ?>
-								<input type="hidden" value="{{$date}}" class="form-control" name="date" id="date">
-								<input type="number" max="{{$produk->Quantity}}" value="1" class="form-control" name="jumlah" id="jumlah">
-								<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-cart-plus"></i> Add to cart</button>
-								{{ csrf_field() }}
-                <button class="btn btn-dark btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
+                <a href="{{route('listProduk',auth()->user()->id)}}" class="btn btn-danger btn-sm" type="button"><li class="fa fa-arrow-circle-left"></li> Kembali</a>
               </div>
             </div>
           </div>
         </div>
-				</form>
       </div>
     </div>
   </div>
 </div>
+@endsection
+@section('s')
+<script>
+	$(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 @endsection

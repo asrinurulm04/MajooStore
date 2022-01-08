@@ -40,12 +40,14 @@ Route::get('userapproval/{id}/update', [
 Route::get('userapproval/{id}/destroy', [
     'uses'=>'admin\ApprovalController@destroy',
     'as' =>'ua.destroy']);
+Route::get('listuser','users\UserController@List')->name('listuser');
 
 Route::get('listProduk/{id}','admin\ProdukController@listProduk')->name('listProduk');
 Route::get('editproduk/{id}','admin\ProdukController@editproduk')->name('editproduk');
 Route::post('editdataproduk/{id}','admin\ProdukController@editdataproduk')->name('editdataproduk');
 Route::get('showproduk/{id}','admin\ProdukController@showproduk')->name('showproduk');
 Route::get('addproduk/{id}','admin\ProdukController@addproduk')->name('addproduk');
+Route::get('detailproduk/{id}','admin\ProdukController@detailproduk')->name('detailproduk');
 Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
 
 // Pembeli
@@ -58,6 +60,8 @@ Route::get('detail/{id}/{data}','pelanggan\informasiController@infoDetail')->nam
 
 // Supplier
 Route::get('order/{id}','supplier\OrderController@order')->name('order');
+Route::get('detailOrder/{id}/{data}','supplier\OrderController@detailOrder')->name('detailOrder');
+Route::get('kirimOrder/{id}','supplier\OrderController@kirimOrder')->name('kirimOrder');
 Route::get('profile/{id}','supplier\ProfileController@profile')->name('profile');
 Route::post('addToko/{id}','supplier\ProfileController@addToko')->name('addToko');
 

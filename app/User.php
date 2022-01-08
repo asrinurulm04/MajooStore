@@ -13,22 +13,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
-    public function Departement(){
-        return $this->belongsTo('App\users\Departement');
-    }
-
-    public function Workbook(){
-        return $this->hasMany('App\dev\Workbook');
-    }
-
-    public function User(){
-        return $this->hasMany('App\dev\Bahan');
-    }
-
-    public function Subbrand(){
-        return $this->hasOne('App\master\Subbrand');
-    }
-
 
     use Notifiable;
 

@@ -24,13 +24,13 @@
 				<table id="example" class="table table-striped table-bordered" style="width:100%">
           <thead>
             <tr>
-              <th data-toggle="true">Product Name</th>
-              <th data-hide="phone">Kategori</th>
-              <th data-hide="all">Description</th>
-              <th data-hide="phone">Price</th>
-              <th data-hide="phone,tablet" >Quantity</th>
-              <th data-hide="phone">Status</th>
-              <th class="text-right" data-sort-ignore="true" width="15%">Action</th>
+              <th class="text-center">Product Name</th>
+              <th class="text-center">Kategori</th>
+              <th class="text-center">Description</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Status</th>
+              <th class="text-center" data-sort-ignore="true" width="15%">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -40,11 +40,17 @@
 								<td>{{$produk->type->jenis_usaha}}</td>
 								<td>{{$produk->desc}}</td>
 								<td>{{$produk->harga}}</td>
-								<td>{{$produk->Quantity}}</td>
+								<td class="text-center">
+                  @if($produk->Quantity<=9)
+                  <span class="label label-danger">{{$produk->Quantity}}</span>
+                  @elseif($produk->Quantity>=10)
+                  <span class="label label-success">{{$produk->Quantity}}</span>
+                  @endif
+                </td>
 								<td>{{$produk->status}}</td>
 								<td class="text-center">
 									<a href="{{route('editproduk',$produk->id)}}" class="btn btn-warning"><li class="fa fa-edit"></li> Edit</a>
-									<a href="{{route('showproduk',$produk->id)}}" class="btn btn-info"><li class="fa fa-edit"></li> Show</a>
+									<a href="{{route('detailproduk',$produk->id)}}" class="btn btn-info"><li class="fa fa-edit"></li> Show</a>
 								</td>
 							</tr>
 						@endforeach
