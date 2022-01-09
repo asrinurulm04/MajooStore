@@ -4,6 +4,7 @@
 <head>
     <title>@yield('title')</title>
 
+	  <link href="{{ asset('images/logo2.png') }}" rel="icon">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet">
@@ -30,9 +31,9 @@
               <li><a href="{{route('info',auth()->user()->id)}}"><i class="fa fa-shopping-bag"></i>Informasi</a></li>
               @elseif(auth()->user()->role_id === 2)
               <li><a href="{{route('dasboard')}}"><i class="fa fa-home"></i>Dasboard</a></li>
-              <li><a href="{{route('profile',Auth::user()->id)}}"><i class="fa fa-user"></i>Profile</a></li>
+              <li><a href="{{route('laporan',Auth::user()->id)}}"><i class="fa fa-file"></i>Laporan</a></li>
               <li><a href="{{route('listProduk',Auth::user()->id)}}"><i class="fa fa-shopping-bag"></i>Produk</a></li>
-              <li><a href="{{route('order',Auth::user()->id)}}"><i class="fa fa-shopping-basket"></i>Order</a></li>
+              <li><a href="{{route('order',Auth::user()->id)}}"><i class="fa fa-shopping-basket"></i>Order @yield('hitung')</a> </li> 
               @endif
             </ul>
           </div>

@@ -52,7 +52,7 @@
               </div>
             </div>
             <div class="form-group row">
-              <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Alamat Toko*</label>
+              <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Alamat*</label>
               <div class="col-md-9 col-sm-8 col-xs-12">
                 <input id="alamat" class="form-control" value="{{$user->alamat}}" required value="" type="text" name="alamat" >
               </div>

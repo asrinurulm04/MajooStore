@@ -40,7 +40,16 @@
             <div class="form-groupcontainer-login100-form-btn">
               <button class="login100-form-btn btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
               {{ csrf_field() }}
-              @include('formerrors')
+              @if(count($errors) > 0)
+              <br><div class="alert alert-danger" style="font-size:11px">
+                <strong>Whoops!</strong><br>
+                <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+              @endif
             </div>
             </form>
             <div class="form-group registration text-center">

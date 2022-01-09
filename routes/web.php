@@ -13,6 +13,7 @@ Route::get('/MyProfile','users\ProfilController@show')->name('MyProfile');
 Route::patch('/updateprof','users\ProfilController@update')->name('updateprof');
 
 /** Auth */
+
 Route::get('daftar', 'users\RegistrationController@create');
 Route::post('add', [
     'uses'=> 'users\RegistrationController@registrationPost',
@@ -27,8 +28,11 @@ Route::get('signout', function(){
 
 route::get('dasboard','DasboardController@index')->name('dasboard');
 route::get('dasboard2/{data}','DasboardController@index2')->name('dasboard2');
+/**** PESAN Antar User */
+Route::post('send','PesanController@send')->name('send.email');
 
 /****** ADMIN**/
+
 /*User Approval*/
 Route::get('userapproval', 'admin\ApprovalController@index')->name('userapproval');
 Route::get('userapproval/{id}/update', [
@@ -50,6 +54,18 @@ Route::get('detailproduk/{id}','admin\ProdukController@detailproduk')->name('det
 Route::post('newproduk','admin\ProdukController@newproduk')->name('newproduk');
 Route::get('kategori/{id}','admin\ProdukController@kategori')->name('kategori');
 Route::get('produk/{id}','admin\ProdukController@produk')->name('produk');
+Route::get('laporan/{id}','admin\ProdukController@laporan')->name('laporan');
+
+
+Route::post('file-upload', 'ProdukController@fileUploadPost')->name('fileUploadPost');
+
+// Pembeli
+Route::get('cart/{id}','pelanggan\CartController@cart')->name('cart');
+Route::post('addPembelian/{id}','pelanggan\PembelianController@addPembelian')->name('addPembelian');
+Route::post('checkout','pelanggan\CartController@checkout')->name('checkout');
+Route::get('delete/{id}','pelanggan\CartController@delete')->name('delete');
+Route::get('info/{id}','pelanggan\informasiController@info')->name('info');
+Route::get('detail/{id}/{data}','pelanggan\informasiController@infoDetail')->name('detail');
 
 // Supplier
 Route::get('order/{id}','supplier\OrderController@order')->name('order');
@@ -58,3 +74,4 @@ Route::get('kirimOrder/{id}','supplier\OrderController@kirimOrder')->name('kirim
 Route::get('terimaOrder/{id}','supplier\OrderController@terimaOrder')->name('terimaOrder');
 Route::get('profile/{id}','supplier\ProfileController@profile')->name('profile');
 Route::post('addToko/{id}','supplier\ProfileController@addToko')->name('addToko');
+ 

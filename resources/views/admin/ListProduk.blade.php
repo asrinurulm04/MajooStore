@@ -74,7 +74,7 @@
             <tr>
               <th class="text-center">Product Name</th>
               <th class="text-center">Kategori</th>
-              <th class="text-center">Description</th>
+              <th class="text-center" width="35%">Description</th>
               <th class="text-center">Price</th>
               <th class="text-center">Quantity</th>
               <th class="text-center">Status</th>
@@ -86,7 +86,7 @@
 							<tr>
 								<td>{{$produk->nama_produk}}</td>
 								<td>{{$produk->type->jenis_usaha}}</td>
-								<td>{{$produk->desc}}</td>
+								<td><?php $tampil_sebagian =substr($produk->desc, 0, 150); echo "Hasil =";echo $tampil_sebagian; ?></td>
 								<td class="text-right"><?php $angka_format = number_format($produk->harga,2,",","."); echo "Rp. ".$angka_format;?></td>
 								<td class="text-center">
                   @if($produk->Quantity<=9)
@@ -98,7 +98,7 @@
 								<td>{{$produk->status}}</td>
 								<td class="text-center">
 									<a href="{{route('editproduk',$produk->id)}}" class="btn btn-warning"><li class="fa fa-edit"></li> Edit</a>
-									<a href="{{route('detailproduk',$produk->id)}}" class="btn btn-info"><li class="fa fa-edit"></li> Show</a>
+									<a href="{{route('detailproduk',$produk->id)}}" class="btn btn-info"><li class="fa fa-edit"></li> Laporan</a>
 								</td>
 							</tr>
 						@endforeach

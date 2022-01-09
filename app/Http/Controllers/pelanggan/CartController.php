@@ -26,7 +26,13 @@ class CartController extends Controller
     }
 
     public function delete($id){
-        $cart = keranjang::where('id',$id)->delete();
+        $cart = keranjang::where('id',$id)->first();
+
+        $produk = produk::where('id',$cart->id_produk)->first();
+        $produk->jumlah_terjual = $produk->jumlah_terual - $cart->jumlah_produk;
+        $produk->save();
+        
+        $cart->delete();
 
         return redirect::back();
     }

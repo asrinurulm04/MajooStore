@@ -26,6 +26,15 @@ class ProdukController extends Controller
         ]);
     }
 
+    public function laporan($id){
+        $myproduk = produk::where('id_pemilik',Auth::user()->id)->where('jumlah_terjual','!=','NULL')->get();
+        $type = type::all();
+        return view('supplier.laporan')->with([
+            'myProduk' => $myproduk,
+            'type' => $type
+        ]);
+    }
+
     public function editproduk($id){
         $produk = produk::where('id',$id)->first();
         $type = type::all();
@@ -110,13 +119,11 @@ class ProdukController extends Controller
 
     public function kategori($id){ // menarik data kategori pangan
         $pangan = DB::table('sub_kategori')->where('id_type',$id)->pluck('subkategori','id_type');
-        dd($pangan);
         return json_encode($pangan);
     }
 
     public function produk($id){ // menarik data kategori pangan
         $pangan = DB::table('produk')->where('id_kategori',$id)->pluck('id','nama_produk');
-        dd($pangan);
         return json_encode($pangan);
     }
 }

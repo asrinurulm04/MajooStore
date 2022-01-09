@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Toko;
 use App\produk;
 use App\type;
+use App\keranjang;
 use Auth;
 
 class DasboardController extends Controller
@@ -18,8 +19,10 @@ class DasboardController extends Controller
         $type = type::all();
         $produk = produk::where('Quantity','!=','0')->get();
         $toko = Toko::where('pemilik',Auth::user()->id)->count();
+        $cart = Keranjang::join('produk','produk.id','keranjang.id_produk')->where('status_order','order')->where('id_pemilik',Auth::user()->id)->count();
         return view('dasboard')->with([
             'toko' => $toko,
+            'cart' => $cart,
             'produk' => $produk,
             'type' => $type
         ]);

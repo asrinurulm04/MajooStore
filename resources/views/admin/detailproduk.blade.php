@@ -53,7 +53,7 @@
             <div class="m-t-md">
              <h2 class="product-main-price">Rp. {{$produk->harga}} <small class="text-muted"></small> </h2>
             </div><hr>
-            <h4>Data Penjualan</h4>
+            <h4>Data Penjualan Produk</h4>
 
             <div class=" text-muted">
               <table id="example" class="table table-striped table-bordered" style="width:100%">

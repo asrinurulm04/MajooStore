@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Dasboard')
+@section('hitung')
+<span class="label label-danger">{{$cart}}</span>
+@endsection
+
 @section('info')
 	<h2><li class="fa fa-home"></li> Dasboard</h2>
 	@if(Auth::user()->role_id=='2')
@@ -11,8 +15,8 @@
 		@endif
 	@endif
 @endsection
-@section('content')
 
+@section('content')
 @if (session('status'))
 <div class="col-lg-12 col-md-12 col-sm-12">
   <div class="alert alert-success">

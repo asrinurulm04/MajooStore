@@ -43,13 +43,11 @@
               {{$produk->nama_produk}}
             </h2><hr>
             <div class="m-t-md">
-             <h2 class="product-main-price">Rp. {{$produk->harga}} <small class="text-muted"></small> </h2>
+             <h2 class="product-main-price"><?php $angka_format = number_format($produk->harga,2,",","."); echo "Rp. ".$angka_format;?> <small class="text-muted"></small> </h2>
             </div>
             <h4>Deskipsi Produk</h4>
 
-            <div class=" text-muted">
-              {{$produk->desc}}
-            </div>
+            <div class=" text-muted">{!! nl2br(htmlspecialchars($produk->desc)) !!}</div>
             <dl class=" m-t-md">
               <dt>Stok Tersedia</dt>
               <dd>{{$produk->Quantity}}</dd>
