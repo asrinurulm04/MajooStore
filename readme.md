@@ -8,14 +8,14 @@
 </p>
 
 ## Informasi akun yang bisa di gunakan
-- Pelanggan
+1. Pelanggan
 * username = pelanggan
 * password = 123456
 
-- Supplier
+2. Supplier
 * username = supplier
 * password = 123456
 
-- Admin
+3. Admin
 * username = adminn
 * password = 123456
