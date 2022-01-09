@@ -74,6 +74,7 @@
               <th class="text-center">Customer</th>
               <th class="text-center">Total Biaya</th>
               <th class="text-center" width="10%">Jumlah Order</th>
+              <th class="text-center" width="10%">Ekspedisi</th>
               <th class="text-center">Tanggal Order</th>
               <th class="text-center">Status</th>
               <th class="text-center" width="5%">Action</th>
@@ -85,6 +86,7 @@
               <td>{{$order->users->name}}</td>
               <td>{{$order->jumlah_produk * $order->produk->harga}}</td>
               <td>{{$order->jumlah_produk}}</td>
+              <td class="text-center">@if($order->id_ekspedisi!=NULL){{$order->ekspedisi1->ekspedisi}}@endif</td>
               <td>{{$order->tanggal_pembelian}}</td>
               <td>
                 @if($order->status_order=='order')

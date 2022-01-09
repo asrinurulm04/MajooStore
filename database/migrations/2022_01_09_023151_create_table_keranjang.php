@@ -19,6 +19,7 @@ class CreateTableKeranjang extends Migration
             $table->integer('id_produk');
             $table->integer('jumlah_produk');
             $table->string('tanggal_pembelian');
+            $table->integer('id_ekspedisi');
             $table->enum('status_order',['keranjang','order','proses','kirim','selesai']);
             $table->rememberToken();
             $table->timestamps();

@@ -69,6 +69,10 @@
             <dl class=" m-t-md">
               <dt>Tanggal Order : {{$cart->tanggal_pembelian}}</dt>
               <dt>Jumlah Order : {{$cart->jumlah_produk}}</dt>
+              @if($cart->id_ekspedisi!=NULL)
+              <dt>Ekspedisi : {{$cart->ekspedisi1->ekspedisi}}</dt>
+              <dt>Ongkos Kirim : {{$cart->ekspedisi1->biaya_ongkir}}</dt>
+              @endif
             </dl><hr>
 
             <div>

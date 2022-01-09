@@ -16,4 +16,8 @@ class keranjang extends Model
     public function users(){
         return $this->hasOne('App\User','id','id_pembeli');
     }
+    
+    public function ekspedisi1(){
+        return $this->hasOne('App\ekspedisi','id','id_ekspedisi');
+    }
 }

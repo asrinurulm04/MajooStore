@@ -61,6 +61,7 @@ Route::post('file-upload', 'ProdukController@fileUploadPost')->name('fileUploadP
 
 // Pembeli
 Route::get('cart/{id}','pelanggan\CartController@cart')->name('cart');
+Route::post('ekspedisi/{id}','pelanggan\CartController@ekspedisi')->name('ekspedisi');
 Route::post('addPembelian/{id}','pelanggan\PembelianController@addPembelian')->name('addPembelian');
 Route::post('checkout','pelanggan\CartController@checkout')->name('checkout');
 Route::get('delete/{id}','pelanggan\CartController@delete')->name('delete');
