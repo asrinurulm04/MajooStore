@@ -19,3 +19,6 @@
 3. Admin
 * username = adminn
 * password = 123456
+
+Laravel 5.5
+PHP 7.2.32
