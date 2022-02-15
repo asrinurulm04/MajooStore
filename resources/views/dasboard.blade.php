@@ -40,6 +40,7 @@
         @foreach($type as $type)
         <a href="{{route('dasboard2',$type->id)}}" class="btn btn-primary btn-sm" type="button">{{$type->jenis_usaha}}</a>
         @endforeach
+        <a href="{{route('dasboard')}}" class="btn btn-primary btn-sm" type="button">All</a>
     </div>
   </div>
 </center>
